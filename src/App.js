@@ -9,6 +9,7 @@ import List from "./components/List/List";
 class App extends Component {
   state = {
     modalIsOpen: false,
+    showBlock: false,
   };
 
   showModal = () => {
@@ -41,7 +42,7 @@ class App extends Component {
           {(state) => (
             <div
               style={{
-                background: "red",
+                backgroundColor: "red",
                 width: 100,
                 height: 100,
                 margin: "auto",
@@ -51,13 +52,8 @@ class App extends Component {
             />
           )}
         </Transition>
-
-        {this.state.modalIsOpen ? (
-          <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
-        ) : null}
-        {this.state.modalIsOpen ? (
-          <Backdrop show={this.state.modalIsOpen} />
-        ) : null}
+        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />;
+        {this.state.modalIsOpen ? <Backdrop show /> : null}
         <button className="Button" onClick={this.showModal}>
           Open Modal
         </button>
